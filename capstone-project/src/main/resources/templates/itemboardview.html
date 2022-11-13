@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>상품 공구 상세 페이지</title>
+</head>
+<body>
+
+<h1 th:text="${itemboard.title}"></h1>
+<table>
+    <tr>
+        <td>모집인원</td>
+        <td th:text="${itemboard.present_num} + ' / ' + ${itemboard.done_num} + '명'"></td>
+    </tr>
+    <tr>
+        <td>마감시간</td>
+        <td th:text="${itemboard.price}"></td>
+    </tr>
+    <tr>
+        <td>총금액</td>
+        <td th:text="${itemboard.price} + '원'"></td>
+    </tr>
+    <tr>
+        <td>배달료</td>
+        <td th:text="${itemboard.delivery_fee} + '원'"></td>
+    </tr>
+    <tr>
+        <td>1인당 금액</td>
+        <td th:text="(${itemboard.price} + ${itemboard.delivery_fee})/${itemboard.done_num} + '원'"></td>
+    </tr>
+    <tr>
+        <td th:text="${itemboard.host_id} + '님이 모집중입니다'"></td>
+    </tr>
+    <tr>
+        <td>매너온도</td>
+        <td>°C</td>
+    </tr>
+</table>
+
+<p th:text="${itemboard.content}"></p>
+<a href="@{/itemboard/modify(item_post_seq=${itemboard.item_post_seq})}">수정</a>
+<a href="@{/itemboard/delete(item_post_seq=${itemboard.item_post_seq})}">삭제</a>
+</body>
+</html>
